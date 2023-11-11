@@ -36,7 +36,7 @@ fun notas() {
             // Utiliza el modificador fillMaxSize para que la imagen ocupe todo el espacio disponible
             Image(
                 painter = painterResource(id = R.drawable.1),
-                contentDescription = "NOTAS",
+                contentDescription = "NOTAS ESTUDIANTE",
                 modifier = Modifier.fillMaxSize(),
                 contentScale = ContentScale.Crop // Esto recortará la imagen para que llene el espacio sin distorsionarla
             )
