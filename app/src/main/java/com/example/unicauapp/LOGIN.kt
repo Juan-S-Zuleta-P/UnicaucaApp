@@ -160,30 +160,24 @@ fun RowCorreo(email: String, emailChage: (String) -> Unit, isValidEmail: Boolean
             .padding(10.dp), horizontalArrangement = Arrangement.Center) {
 
         OutlinedTextField(
-            value = email,
+            value =email ,
             onValueChange = emailChage,
-            label = { Text(text = "Email") },
+            label = { Text(text="Email") },
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
             maxLines = 1,
             singleLine = true,
-            modifier = Modifier
-                .heightIn(min = 48.dp) // Ajusta la altura según tus necesidades
-                .fillMaxWidth(),
-            colors = if (isValidEmail) {
+            colors = if(isValidEmail){
                 TextFieldDefaults.outlinedTextFieldColors(
                     focusedLabelColor = Color.Green,
-                    focusedBorderColor = Color.Green,
-                    cursorColor = Color.Green, // Opcional: ajusta el color del cursor
-                    textColor = Color.Black // Opcional: ajusta el color del texto
+                    focusedBorderColor = Color.Green
                 )
-            } else {
+            } else{
                 TextFieldDefaults.outlinedTextFieldColors(
                     focusedLabelColor = Color.Red,
-                    focusedBorderColor = Color.Red,
-                    cursorColor = Color.Red, // Opcional: ajusta el color del cursor
-                    textColor = Color.Black // Opcional: ajusta el color del texto
+                    focusedBorderColor = Color.Red
                 )
             }
+
         )
     }
 
