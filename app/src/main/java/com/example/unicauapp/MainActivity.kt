@@ -27,6 +27,7 @@ class MainActivity : ComponentActivity() {
                    carnet()
                    horario()
                    creadores()
+                   noticias()
 
 
 

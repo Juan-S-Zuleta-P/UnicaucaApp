@@ -22,16 +22,16 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun carnet() {
 
-    Column(
+    /*Column(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = Modifier
             .fillMaxSize()
             .background(Color(0xFFFFFFFF))
-    ) {
-        Column(
+    ) {*/
+        /*Column(
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier.padding(10.dp)
-        ) {
+        ) {*/
             Spacer(modifier = Modifier.height(150.dp))
 
             // Utiliza el modificador fillMaxSize para que la imagen ocupe todo el espacio disponible
@@ -46,6 +46,6 @@ fun carnet() {
         }
 
 
-    }
-}
+
+
 
