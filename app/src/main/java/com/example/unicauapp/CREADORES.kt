@@ -12,8 +12,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -24,11 +29,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
 
-@Preview(showBackground = true, showSystemUi = true)
+//@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun creadores() {
+fun creadores(navController: NavController) {
+    var isSecondScreenVisible by remember { mutableStateOf(false) }
 
     Column(
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -37,6 +44,9 @@ fun creadores() {
             .fillMaxSize()
             .padding(10.dp)
     ) {
+        // Botones para volver a la pantalla anterior o ir a otra pantalla
+        RowBotonLogin(navController)
+
         // Título
         Text(
             text = "DEVELOPERS",
@@ -139,5 +149,36 @@ fun creadores() {
             modifier = Modifier
                 .size(150.dp)
         )
+    }
+}
+
+@Composable
+fun RowBotonLogin(navController: NavController) {
+    Row(
+        Modifier
+            .fillMaxWidth()
+            .padding(10.dp),
+        horizontalArrangement = Arrangement.Center
+    ) {
+        Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                navController.popBackStack()
+            }
+        ) {
+            Text(text = "Volver a Noticias")
+        }
+
+        Spacer(modifier = Modifier.width(16.dp))
+
+        /*Button(
+            modifier = Modifier.fillMaxWidth(),
+            onClick = {
+                // Cambia la ruta con la correcta para ir a otra pantalla
+                navController.navigate(RUTAS.P4.ruta)
+            }
+        ) {
+            Text(text = "Ir a Otra Pantalla")
+        }*/
     }
 }

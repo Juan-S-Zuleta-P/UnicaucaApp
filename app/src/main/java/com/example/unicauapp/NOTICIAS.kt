@@ -13,8 +13,13 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -25,10 +30,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
-@Preview(showBackground = true, showSystemUi = true)
+//@Preview(showBackground = true, showSystemUi = true)
 @Composable
-fun noticias() {
+fun noticias(navController: NavController) {
+    var isSecondScreenVisible by remember { mutableStateOf(false) }
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -36,6 +44,36 @@ fun noticias() {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Top
     ) {
+        // Botones para navegar a otra pantalla o volver a login
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(16.dp),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Button(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(10.dp),
+                onClick = { navController.popBackStack(RUTAS.P5.ruta, inclusive = false) }
+            ) {
+                Text(text = "Volver a Notas")
+            }
+
+            Spacer(modifier = Modifier.width(16.dp))
+
+            Button(
+                modifier = Modifier
+                    .weight(1f)
+                    .padding(10.dp),
+                onClick = { navController.navigate(RUTAS.P7.ruta)}
+            ) {
+                Text(text = "Creadores")
+            }
+        }
+
+        Spacer(modifier = Modifier.height(16.dp))
+
         // Título de la pantalla
         Text(
             text = "Últimas Noticias",
